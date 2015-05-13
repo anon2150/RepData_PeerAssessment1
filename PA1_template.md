@@ -109,7 +109,7 @@ impute.mean <- function(x) replace(x, is.na(x), mean(x, na.rm = TRUE))
 imputed.data <- ddply(dt, ~ interval, transform, steps = impute.mean(steps))
 imputed.data <- data.table(imputed.data)
 imputed_totalstepsperday <- imputed.data[,lapply(.SD,sum), by=date]
-hist(totalstepsperday$steps, xlab = "Steps Per Day", main="Histogram of Steps Per Day (w Imputed Values)")
+hist(imputed_totalstepsperday$steps, xlab = "Steps Per Day", main="Histogram of Steps Per Day (w Imputed Values)")
 ```
 
 ![plot of chunk imputed_values](figure/imputed_values-1.png) 
